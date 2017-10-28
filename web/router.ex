@@ -16,7 +16,10 @@ defmodule Discuss.Router do
   scope "/", Discuss do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    # Takes the route, selects the controller, and then runs an :index function on it.
+    get "/", TopicController, :index
+    get "/topics/new", TopicController, :new
+    post "/topics", TopicController, :create
   end
 
   # Other scopes may use custom stacks.
